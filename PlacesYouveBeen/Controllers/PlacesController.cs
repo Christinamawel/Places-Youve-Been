@@ -9,7 +9,7 @@ namespace PlacesYouveBeen
     [HttpGet("/places")]
     public ActionResult Index()
     {
-      List<Places> outputList = Places.placeList;
+      List<Places> outputList = Places.GetAll();
       return View(outputList);
     }
 
@@ -23,6 +23,7 @@ namespace PlacesYouveBeen
     public ActionResult Create(string cityname)
     {
       Places newPlace = new Places(cityname);
+      newPlace.Save();
       return RedirectToAction("Index");
     }
 
